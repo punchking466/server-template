@@ -1,0 +1,53 @@
+#회원가입
+
+/users/signup/{role}:
+  post:
+    $ref: ./users/signup-post.yaml
+
+/users:
+  delete:
+    $ref: ./users/delete.yaml
+
+/users/signin:
+  post:
+    $ref: ./users/signin-post.yaml
+
+/users/findemail:
+  get:
+    $ref: ./users/findemail-post.yaml
+
+/users/password:
+  put:
+    $ref: ./users/password-put.yaml
+
+#인증관련
+/auth:
+  get:
+    $ref: ./auth/validation.yaml
+
+/auth/mail:
+  post:
+    $ref: ./auth/mail-post.yaml
+
+/auth/sms:
+  post:
+    $ref: ./auth/sms-post.yaml
+
+/auth/refresh:
+  post:
+    $ref: ./auth/refresh.yaml
+
+#공지사항(게시판)
+/notice:
+  get:
+    $ref: ./notice/notice-list.yaml
+  post:
+    $ref: ./notice/notice-post.yaml
+
+/notice/{id}:
+  get:
+    $ref: ./notice/notice-get.yaml
+  put:
+   $ref: ./notice/notice-put.yaml
+  delete:
+   $ref: ./notice/notice-delete.yaml

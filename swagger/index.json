@@ -1,0 +1,441 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API"
+  },
+  "host": "localhost:10054",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "accessToken": {
+      "type": "apiKey",
+      "name": "authorization",
+      "scheme": "bearer",
+      "in": "header"
+    },
+    "refreshToken": {
+      "type": "apiKey",
+      "name": "refresh",
+      "in": "header"
+    }
+  },
+  "paths": {
+    "/users/signup/{role}": {
+      "post": {
+        "tags": [
+          "회원가입"
+        ],
+        "summary": "회원가입",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "role",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "signname": {
+                  "required": true,
+                  "type": "string",
+                  "example": "aaa@exmaple.com"
+                },
+                "password": {
+                  "required": true,
+                  "type": "string",
+                  "example": "1q2w3e4r!"
+                },
+                "user_name": {
+                  "required": true,
+                  "type": "string",
+                  "example": "김철밥"
+                },
+                "user_phone": {
+                  "required": true,
+                  "type": "string",
+                  "example": "01012345678"
+                },
+                "zip_code": {
+                  "required": true,
+                  "type": "string",
+                  "example": 12345
+                },
+                "address": {
+                  "required": true,
+                  "type": "string",
+                  "example": "서울특별시 송파구"
+                },
+                "detail_address": {
+                  "required": true,
+                  "type": "string",
+                  "example": "천국빌라 101호"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users": {
+      "delete": {
+        "tags": [
+          "로그인 관련"
+        ],
+        "summary": "회원탈퇴",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "signname": {
+                  "required": true,
+                  "type": "string",
+                  "example": "aaa@exmaple.com"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/signin": {
+      "post": {
+        "tags": [
+          "로그인 관련"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "signname": {
+                  "required": true,
+                  "type": "string",
+                  "example": "aaa@exmaple.com"
+                },
+                "password": {
+                  "required": true,
+                  "type": "string",
+                  "example": "1q2w3e4r"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/findemail": {
+      "get": {
+        "tags": [
+          "로그인 관련"
+        ],
+        "summary": "이메일 찾기",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "phone",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/users/password": {
+      "put": {
+        "tags": [
+          "로그인 관련"
+        ],
+        "summary": "비밀번호 변경",
+        "definitions": {
+          "user": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "signname": {
+                  "required": true,
+                  "type": "string",
+                  "example": "aaa@exmaple.com"
+                },
+                "password": {
+                  "required": true,
+                  "type": "string",
+                  "example": "1q2w3e4r"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/auth": {
+      "get": {
+        "tags": [
+          "인증 관련"
+        ],
+        "summary": "인증코드 검증",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "authKey",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "authCode",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/auth/mail": {
+      "post": {
+        "tags": [
+          "인증 관련"
+        ],
+        "summary": "인증코드 발송",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "required": true,
+                  "type": "string",
+                  "example": "abcd@exmaple.com"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/auth/sms": {
+      "post": {
+        "tags": [
+          "인증 관련"
+        ],
+        "summary": "SMS 발송",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "required": true,
+                  "type": "string",
+                  "example": "01012345678"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "tags": [
+          "인증 관련"
+        ],
+        "summary": "accessToken 재발급",
+        "responses": {},
+        "security": [
+          {
+            "accessToken": [],
+            "refreshToken": []
+          }
+        ]
+      }
+    },
+    "/notice": {
+      "get": {
+        "tags": [
+          "공지사항 관련(게시판)"
+        ],
+        "summary": "공지사항 리스트 호출",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "curPage",
+            "required": false,
+            "description": "offset"
+          },
+          {
+            "in": "query",
+            "name": "pageSize",
+            "required": false,
+            "description": "limit"
+          },
+          {
+            "in": "query",
+            "name": "orderCol",
+            "required": false,
+            "description": "order by"
+          },
+          {
+            "in": "query",
+            "name": "orderVal",
+            "required": false,
+            "description": "desc or asc"
+          },
+          {
+            "in": "query",
+            "name": "filterCol",
+            "required": false,
+            "description": "조건"
+          },
+          {
+            "in": "query",
+            "name": "filterVal",
+            "required": false,
+            "description": "조건"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "accessToken": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "공지사항 관련(게시판)"
+        ],
+        "summary": "공지사항 생성",
+        "consumes": "multipart/form-data",
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "notice",
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "content",
+            "type": "TEXT"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "accessToken": []
+          }
+        ]
+      }
+    },
+    "/notice/{id}": {
+      "get": {
+        "tags": [
+          "공지사항 관련(게시판)"
+        ],
+        "summary": "특정공지 호출",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "accessToken": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "공지사항 관련(게시판)"
+        ],
+        "summary": "특정공지 수정",
+        "consumes": "multipart/form-data",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id"
+          },
+          {
+            "in": "formData",
+            "name": "notice",
+            "type": "file"
+          },
+          {
+            "in": "formData",
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "content",
+            "type": "TEXT"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "accessToken": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "공지사항 관련(게시판)"
+        ],
+        "summary": "공지 삭제",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id"
+          }
+        ],
+        "responses": {},
+        "security": [
+          {
+            "accessToken": []
+          }
+        ]
+      }
+    }
+  }
+}

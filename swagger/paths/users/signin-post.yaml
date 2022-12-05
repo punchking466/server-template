@@ -1,0 +1,18 @@
+tags:
+  - 로그인 관련
+parameters:
+  - in: body
+    name: body
+    schema:
+      type: object
+      properties:
+        signname:
+          required: true
+          type: string
+          example: aaa@exmaple.com
+        password:
+          required: true
+          type: string
+          example: 1q2w3e4r
+responses:
+  {}

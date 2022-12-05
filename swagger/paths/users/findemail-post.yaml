@@ -1,0 +1,9 @@
+tags:
+  - 로그인 관련
+summary: 이메일 찾기
+parameters:
+  - in: query
+    name: phone
+    required: true
+responses:
+  {}

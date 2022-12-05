@@ -1,0 +1,20 @@
+tags:
+  - 공지사항 관련(게시판)
+summary: 특정공지 수정
+consumes: multipart/form-data
+parameters:
+  - in: path
+    name: id
+  - in: formData
+    name: notice
+    type: file
+  - in: formData
+    name: title
+    type: string
+  - in: formData
+    name: content
+    type: TEXT
+responses:
+  {}
+security:
+  - accessToken: []

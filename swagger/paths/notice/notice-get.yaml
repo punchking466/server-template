@@ -1,0 +1,10 @@
+tags:
+  - 공지사항 관련(게시판)
+summary: 특정공지 호출
+parameters:
+  - in: path
+    name: id
+responses:
+  {}
+security:
+  - accessToken: []

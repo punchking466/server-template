@@ -1,0 +1,12 @@
+tags:
+  - 인증 관련
+summary: 인증코드 검증
+parameters:
+  - in: query
+    name: authKey
+    required: true
+  - in: query
+    name: authCode
+    required: true
+responses:
+  {}

@@ -1,0 +1,21 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: API
+host: localhost:10054
+basePath: /
+schemes: [http, https]
+securityDefinitions:
+  accessToken:
+    type: apiKey
+    name: authorization
+    scheme: bearer
+    in: header
+  refreshToken:
+    type: apiKey
+    name: refresh
+    in: header
+paths:
+  $ref: ./paths/index.yaml
+definitions:
+  $ref: ./definitions/index.yaml

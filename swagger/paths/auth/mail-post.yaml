@@ -1,0 +1,15 @@
+tags:
+  - 인증 관련
+summary: 인증코드 발송
+parameters:
+  - in: body
+    name: body
+    schema:
+      type: object
+      properties:
+        email:
+          required: true
+          type: string
+          example: abcd@exmaple.com
+responses:
+  {}

@@ -1,0 +1,44 @@
+tags:
+  - 회원가입
+summary: 회원가입
+parameters:
+  - in: path
+    name: role
+    required: true
+    schema:
+      type: integer
+  - in: body
+    name : body
+    schema:
+      type: object
+      properties:
+        signname:
+          required: true
+          type: string
+          example: aaa@exmaple.com
+        password:
+          required: true
+          type: string
+          example: 1q2w3e4r!
+        user_name:
+          required: true
+          type: string
+          example: 김철밥
+        user_phone:
+          required: true
+          type: string
+          example: 01012345678
+        zip_code:
+          required: true
+          type:  string
+          example: 12345
+        address:
+          required: true
+          type: string
+          example: 서울특별시 송파구
+        detail_address:
+          required: true
+          type: string
+          example: 천국빌라 101호
+responses:
+  {}

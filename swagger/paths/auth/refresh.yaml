@@ -1,0 +1,8 @@
+tags:
+  - 인증 관련
+summary: accessToken 재발급
+responses:
+  {}
+security:
+  - accessToken: []
+    refreshToken: []
